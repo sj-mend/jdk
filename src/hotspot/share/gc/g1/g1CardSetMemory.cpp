@@ -62,8 +62,8 @@ size_t G1CardSetAllocator::mem_size() const {
 
 size_t G1CardSetAllocator::wasted_mem_size() const {
   uint num_wasted_slots = _segmented_array.num_available_slots() -
-                          _segmented_array.num_allocated_slots() -
-                          (uint)_free_slots_list.pending_count();
+                         (_segmented_array.num_allocated_slots() -
+                          (uint)_free_slots_list.pending_count());
   return num_wasted_slots * _segmented_array.slot_size();
 }
 
